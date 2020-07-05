@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<title>Radix</title>
+<style type="text/css">
+.page-content {
+	margin: 20px;
+	font-size: medium;
+}
+</style>
+</head>
+<body>
+<script>
+function id(e){return document.getElementById(e)}
+
+function base_convert(number, frombase, tobase) {
+    return parseInt(number + '', frombase | 0).toString(tobase | 0);
+}
+
+
+function base_convert_float(num, from, to) {
+    if (num.toString().indexOf('.') == -1) return base_convert(num, from, to);
+    h = num.toString().toLowerCase().split('.');
+    hl = h[1].length;
+    dec = base_convert(h[1], from, 10) / Math.pow(from, hl);
+
+    res_str = '';
+    for (i = 0; i < 8; i++) {
+        dec *= to;
+        res_str += base_convert(Math.floor(dec), 10, to);
+        dec -= Math.floor(dec);
+    }
+    pre = base_convert(h[0], from, to) + '.' + res_str;
+
+    for (j = 0; j <= pre.length; j++) {
+        if (pre.substr((pre.length - 1), 1) == '0') pre = pre.substr(0, (pre.length - 1));
+    }
+
+    return pre;
+}
+
+
+function plus(a, sys_a, b, sys_b, sys_result) {
+    a10 = base_convert_float(a, sys_a, 10);
+    b10 = base_convert_float(b, sys_b, 10);
+    res = parseFloat(a10) + parseFloat(b10);
+
+    return base_convert_float(res.toString(), 10, sys_result);
+}
+
+function minus(a, sys_a, b, sys_b, sys_result) {
+    a10 = base_convert_float(a, sys_a, 10);
+    b10 = base_convert_float(b, sys_b, 10);
+    res = parseFloat(a10) - parseFloat(b10);
+
+    return base_convert_float(res.toString(), 10, sys_result);
+}
+
+function umn(a, sys_a, b, sys_b, sys_result) {
+    a10 = base_convert_float(a, sys_a, 10);
+    b10 = base_convert_float(b, sys_b, 10);
+    res = parseFloat(a10) * parseFloat(b10);
+
+    return base_convert_float(res.toString(), 10, sys_result);
+}
+
+function del(a, sys_a, b, sys_b, sys_result) {
+    a10 = base_convert_float(a, sys_a, 10);
+    b10 = base_convert_float(b, sys_b, 10);
+    res = parseFloat(a10) / parseFloat(b10);
+
+    return base_convert_float(res.toString(), 10, sys_result);
+}
+
+function doconv() {
+    n = document.getElementById('conv_n').value;
+    b1 = parseInt(document.getElementById('conv_b1').value);
+    b2 = parseInt(document.getElementById('conv_b2').value);
+
+    document.getElementById('conv_result').innerHTML = n + '<sub>' + b1 + '</sub> = ' + base_convert_float(n, b1, b2) + '<sub>' + b2 + '</sub>';
+}
+
+function docalc() {
+    n1 = document.getElementById('calc_1').value.toString();
+    n2 = document.getElementById('calc_2').value.toString();
+    b1 = parseInt(document.getElementById('calc_1b').value);
+    b2 = parseInt(document.getElementById('calc_2b').value);
+    rb = parseInt(document.getElementById('calc_rb').value);
+
+    action = document.getElementById('calc').value;
+    if (action == 'plus') {
+        document.getElementById('calc_result').innerHTML = n1 + '<sub>' + b1 + '</sub>' + ' + ' + n2 + '<sub>' + b2 + '</sub> = ' + plus(n1, b1, n2, b2, rb) + '<sub>' + rb + '</sub>';
+    } else {
+        if (action == 'minus') {
+            document.getElementById('calc_result').innerHTML = n1 + '<sub>' + b1 + '</sub>' + ' - ' + n2 + '<sub>' + b2 + '</sub> = ' + minus(n1, b1, n2, b2, rb) + '<sub>' + rb + '</sub>';
+        } else {
+            if (action == 'umn') {
+                document.getElementById('calc_result').innerHTML = n1 + '<sub>' + b1 + '</sub>' + ' * ' + n2 + '<sub>' + b2 + '</sub> = ' + umn(n1, b1, n2, b2, rb) + '<sub>' + rb + '</sub>';
+            } else {
+                if (action == 'del') {
+                    document.getElementById('calc_result').innerHTML = n1 + '<sub>' + b1 + '</sub>' + ' / ' + n2 + '<sub>' + b2 + '</sub> = ' + del(n1, b1, n2, b2, rb) + '<sub>' + rb + '</sub>';
+                }
+            }
+        }
+    }
+}
+
+
+
+
+</script>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-tabs">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Radix operations</span>
+    </div>
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Converter</a>
+      <a href="#fixed-tab-2" class="mdl-layout__tab">Calculator</a>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+      <div class="page-content">
+      <form onsubmit="return false">
+	  <h3>Converter</h3>
+	  Number: <input type="text" id="conv_n" /><br/>
+	  Original radix: <input type="number" min="2" max="36" step="1" id="conv_b1" size="3" /><br/>
+	  Target radix:<input type="number" min="2" max="36" step="1" id="conv_b2" size="3" /><br/><br/>
+	  <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" value="Convert" onclick="doconv()" />
+	  <div id="conv_result"></div>
+	  </form>
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+      <div class="page-content">
+      <form onsubmit="return false">
+	  <h3>Calculator</h3>
+	  Action:
+	  <select id="calc">
+	  <option value="plus">Addition</option>
+	  <option value="minus">Substraction</option>
+	  <option value="umn">Multiplication</option>
+	  <option value="del">Division</option>
+	  </select>
+	  <br/>
+	  First number: <input type="text" id="calc_1" /><br/>
+	  First radix: <input type="number" min="2" max="36" step="1" id="calc_1b" size="3" /><br/>
+	  Second number: <input type="text" id="calc_2" /><br/>
+	  Second radix: <input type="number" min="2" max="36" step="1" id="calc_2b" size="3" /><br/>
+	  Target radix: <input type="number" min="2" max="36" step="1" id="calc_rb" size="3" /><br/><br/>
+	  <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" value="Calculate" onclick="docalc()" />
+	  <div id="calc_result"></div>
+	  </form>
+      </div>
+    </section>
+  </main>
+</div>
+
+
+
+
+
+</body>
+</html>

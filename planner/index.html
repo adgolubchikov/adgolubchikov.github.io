@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width">
+<title>Маршрут</title>
+<style>
+#result1 {display:block}
+#result2 {display:none}
+#result3 {display:none}
+.hidden {display:none}
+</style>
+<script src="currency.js"></script>
+<script src="main.js"></script>
+</head>
+<body onload="init()">
+  <div id="query">
+	  Откуда: <select id="from">
+	  <option value="MOW">Москва</option>
+	  <option value="LED">Санкт-Петербург</option>
+	  <option value="HEL">Хельсинки</option>
+	  <option value="WAW">Варшава</option>
+	  <option value="SVX">Екатеринбург</option>
+	  <option value="VNO">Вильнюс</option>
+	  <option value="KGD">Калининград</option>
+	  <option value="GDN">Гданьск</option>
+	  <option value="STO">Стокгольм</option>
+	  <option value="UFA">Уфа</option>
+	  <option value="NBC">Набережные Челны</option>
+	  <option value="CANARY">Канарские острова</option>
+	  </select>
+	  Куда: <select id="to">
+	  <option value="MOW">Москва</option>
+	  <option value="LED">Санкт-Петербург</option>
+	  <option value="HEL">Хельсинки</option>
+	  <option value="WAW">Варшава</option>
+	  <option value="SVX">Екатеринбург</option>
+	  <option value="VNO">Вильнюс</option>
+	  <option value="KGD">Калининград</option>
+	  <option value="GDN">Гданьск</option>
+	  <option value="STO">Стокгольм</option>
+	  <option value="UFA">Уфа</option>
+	  <option value="NBC">Набережные Челны</option>
+	  </select>
+	  <button onclick="make()">Проложить</button>
+	  <button onclick="next()">Еще варианты</button>
+  </div>
+  <div id="result1">
+  
+  </div>
+  <div id="result2">
+  
+  </div>
+  <div id="result3">
+  
+  </div>
+  <div class="hidden" data-from="MOW" data-to="LED" data-price="15">
+  Есть много способов добраться из одной столицы в другую. <br/>
+  Начнем с самого быстрого - самолет. От 1200 руб, лететь час, полно рейсов разных авиакомпаний во все 3 аэропорта Москвы. Билеты дешевле покупать на <a href="http://www.aviasales.ru/?marker=20017.ag">aviasales.ru</a>. <br/>
+  Далее - <a href="http://pass.rzd.ru">Сапсан</a>. При покупке в 8 утра за 60 дней до поездки билеты стоят 999 рублей, для тех кому 21 год и меньше - всего 700 рублей, цена поменяется автоматически после ввода возраста. Цена на Сапсан динамическая, за день до поездки билет может стоить и 10000 рублей. <br/>
+  Между двумя столицами ездит много ночных поездов, в зависимости от даты можно найти плацкарт за 800-1200 рублей, сидячий еще дешевле. Покупать на <a href="http://pass.rzd.ru">официальном сайте РЖД</a>. <br/>
+  Также есть автобусы, <a href="http://busfor.ru">busfor.ru</a> иногда проводит распродажи по цене от 99 рублей. 
+  </div>
+  <div class="hidden" data-from="MOW" data-to="HEL" data-price="100">
+  Из Москвы в Хельсинки можно добраться на самолете и на поезде.
+  Фирменный поезд ездит каждый день по маршруту Москва-Хельсинки, отправляется вечером, приезжает утром, билеты начинаются от 4500 рублей в каждую сторону на <a href="http://pass.rzd.ru">официальном сайте РЖД</a>. <br/>
+  Самолет стоит примерно столько же (8000-10000 рублей туда-обратно), летает 3-4 рейса в день, билеты на <a href="http://www.aviasales.ru/?marker=20017.ag">aviasales.ru</a>
+  </div>
+  <div class="hidden" data-from="LED" data-to="HEL" data-price="10">
+  Из Петербурга в Хельсинки можно доехать на автобусе, маршрутке и скоростном поезде. <br/>
+  <a href="http://luxexpress.eu">Luxexpress</a> ездит 3 раза в день на очень комфортных автобусах с кофе, Wi-Fi и розетками. Цена на билеты динамическая, от 500 до 2000 рублей в каждую сторону. <br/>
+  Если билеты на Luxexpress дорогие или нужно в аэропорт, то есть полно маршруток с площади Восстания. Как правило цена в город - 800 рублей, в аэропорт - 1000 рублей. <a href="http://amgtravel.ru">amgtravel.ru</a>, <a href="http://scandinavia.spb.ru">scandinavia.spb.ru</a> и другие.<br/>
+  Самый быстрый и комфортный транспорт - скоростной поезд Аллегро, в пути всего 3 часа 27 минут из центра города в центр города. При покупке за 7 дней и более на отправления с понедельника по четверг стоит {29 EUR}. Купить можно на <a href="http://pass.rzd.ru">сайте РЖД</a> и <a href="http://vr.fi">сайте финских ЖД</a>.
+  </div>
+  <div class="hidden" data-from="MOW" data-to="VNO" data-price="20">
+  У РЖД международные тарифы примерно в 3 раза выше внутренних, поэтому чтобы попасть в Вильнюс, надо покупать билеты Москва-Нестеров, плацкарт стоит 1200-2000 рублей в зависимости от сезона. Билеты продаются только в кассах РЖД, на сайте их купить нельзя. Вас точно выпустят в Вильнюсе по билеу до Нестерова и пустят на поезд в Вильнюсе по билету из Нестерова, что было неоднократно проверено множеством людей. При посадке в поезд проводнику говорите, что выйдете в Вильнюсе и то же самое говорите литовскому пограничнику. Пограничнику даете загранпаспорт, он ставит штамп и по этому штампу вас выпустят из вокзала в Вильнюсе. 
+  </div>
+  <div class="hidden" data-from="LED" data-to="VNO" data-price="22">
+  У РЖД международные тарифы примерно в 3 раза выше внутренних, поэтому чтобы попасть в Вильнюс, надо покупать билеты Петербург-Нестеров, плацкарт стоит 1200-2000 рублей в зависимости от сезона. Билеты продаются только в кассах РЖД, на сайте их купить нельзя. Вас точно выпустят в Вильнюсе по билеу до Нестерова и пустят на поезд в Вильнюсе по билету из Нестерова, что было неоднократно проверено множеством людей. При посадке в поезд проводнику говорите, что выйдете в Вильнюсе и то же самое говорите литовскому пограничнику. Пограничнику даете загранпаспорт, он ставит штамп и по этому штампу вас выпустят из вокзала в Вильнюсе. 
+  </div>
+  <div class="hidden" data-from="MOW" data-to="KGD" data-price="25">
+  Обычно самым дешевым транспортом является <a href="http://pass.rzd.ru">поезд</a> (1200-2000 рублей), но <a href="http://www.aviasales.ru/?marker=20017.ag">самолет</a> иногда стоит еще дешевле. 
+  </div>
+  <div class="hidden" data-from="KGD" data-to="GDN" data-price="8">
+  Автобус из Калининграда в Гданьск стоит 500 рублей в одну сторону или 900 туда-обратно, расписание на сайте <a href="http://avtovokzal39.ru/international.html">автовокзала</a>.
+  </div>
+  <div class="hidden" data-from="GDN" data-to="WAW" data-price="2">
+  Между этими городами летает <a href="http://ryanair.com">Ryanair</a> от {9 PLN}, и едят автобусы <a href="http://polskibus.pl">PolskiBus</a> от {2 PLN}. "
+  </div>
+  <div class="hidden" data-from="KGD" data-to="LED" data-price="25">
+  Обычно самым дешевым транспортом является <a href="http://pass.rzd.ru">поезд</a> (1200-2000 рублей).
+  </div>
+  <div class="hidden" data-from="STO" data-to="HEL" data-price="5">
+  Между Хельсинки и Стокгольмом курсируют ночные паромы. Цена каюты начинается от {21 EUR} за четырехместную каюту, каюту продаются только целиком, никого к вам не подселят. Сайты паромных компаний - <a href="http://vikingline.ru">Viking line</a> и <a href="https://www.tallinksilja.ru/passengers">Tallink</a>.<br/>
+  Альтернативным и как правило более дорогим вариантом является самолет, билеты смотреть на <a href="http://www.aviasales.ru/?marker=20017.ag">aviasales.ru</a> и <a href="http://skyscanner.fi">финском Skyscanner</a>.
+  </div>
+  <div class="hidden" data-from="MOW" data-to="NBC" data-price="15">
+  Аэропорт Бегишево удобен тем, что в нем конкурируют 2 дешевых авиакомпании - Nordwid и Победа, поэтому обычно есть билеты за 1000-1500 рублей на <a href="http://www.aviasales.ru/?marker=20017.ag">aviasales.ru</a>.
+  </div>
+  <div class="hidden" data-from="NBC" data-to="UFA" data-price="8">
+  Набережные Челны и Уфа находятся на одной трассе М-7 и хорошо связаны автомобильным транспортом. Автобус стоит 500-800 рублей, по такой же цене можно найти попутку на <a href="htt://blablacar.ru">Блаблакаре</a>.
+  </div>
+  <div class="hidden" data-from="VNO" data-to="PAR" data-price="30">
+  Из Вильнюса в аэропорт Бове летают лоукостеры <a href="http://ryanair.com">Ryanair</a> и <a href="http://wizzair.com">Wizzair</a>. Автобус из Бове в Париж стоит {17 EUR} при покупке на месте и {15.9 EUR} при покупке на <a href="https://shop.aeroportparisbeauvais.com/liste-des-produits/">сайте</a>.
+  </div>
+  <div class="hidden" data-from="MOW" data-to="WAW" data-price="20">
+  Москва-Смоленск <a href='http://pass.rzd.ru'>сайте РЖД</a> от 364р<br/>
+  Смоленск-Орша на двух согласованных электричках с пересадкой на станции Красное 135+45р=180р, расписание <a href='http://rasp.yandex.ru'>тут</a><br/>
+  Орша-Брест на <a href='http://poezd.rw.by'>сайте БЧ</a> плацкарт за 350р, сидячий за 250р, в том числе удобный ночной 22:00-05:40<br/>
+  Брест-Бяла-Подляска на <a href='http://ticketbus.by'>ticketbus.by</a> за {10 BYN}<br/>
+  Бяла-Подляска-Варшава на <a href='http://polskibus.pl'>polskibus.pl</a> от {5 PLN}<br/><br/>
+  Итого от 1300р в одну сторону, обратно столько же.
+  </div>
+  <div class="hidden" data-from="MOW" data-to="SVX" data-price="30">
+  В Екатеринбург летает Победа от 999 рублей, бывают акции и от других авиакомпаний. Билеты на <a href="http://www.aviasales.ru/?marker=20017.ag">aviasales.ru</a>. Также можно доехать на <a href='http://pass.rzd.ru'>поезде</a>.
+  </div>
+  <div class="hidden" data-from="HEL" data-to="CANARY" data-price="40">
+  За сутки до вылета часто есть дешевые чартеры из Хельсинки на Канарские острова, покупать на сайте <a href="http://www.finnmatkat.fi/varaa/">финского туроператора</a>, <a href="http://vandrouki.ru/2016/instruktsiya-kak-pokupat-charteryi-iz-helsinki-na-finnmatkat/">инструкция</a> по покупке. 
+  </div>
+  <div class="hidden" data-from="MOW" data-to="UFA" data-price="50">
+  С уходом Победы цены на перелет взлетели, теперь самолет стоит от 3000 рублей, выбрать самый дешевый можно на <a href="http://www.aviasales.ru/?marker=20017.ag">aviasales.ru</a>.
+  </div>
+  <div class="hidden" data-from="NUL" data-to="NUL" data-price="1000">
+  
+  </div>
+</body>
+</html>

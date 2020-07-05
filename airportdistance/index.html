@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Distance between airports</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="script.js"></script>
+    <script src="data.js"></script>
+    <style type="text/css">
+    .mdl-card__supporting-text { color:#000000!important; }
+    </style>
+</head>
+<body>
+<p class="mdl-card__supporting-text">
+IATA code of the airport: <input id="iata" value="SVO" size="4" type="text" /> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="info()">Show</button>
+<hr/>
+<span class="mdl-card__supporting-text">Information about the airport:<br/></span>
+<p class="mdl-card__supporting-text" id="info">
+
+</p>
+<hr/>
+<span class="mdl-card__supporting-text">IATA codes: <input id="iata1" value="SVO" size="4" type="text" /> <input id="iata2" value="LED" size="4" type="text" /> <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="showdist()">Calculate the distance</button></span>
+<hr/>
+<span class="mdl-card__supporting-text" id="distance">
+
+</span>
+</p>
+
+</body>
+</html>
