@@ -19,3 +19,9 @@ max-height: 600px;
 min-height: 500px;
 
 }
+
+@media screen and (max-width: 1024px) {
+    .page-content {
+    margin-top: 60px;
+    }
+}
