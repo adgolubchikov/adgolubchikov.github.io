@@ -61,7 +61,7 @@ const http = require('http');
 const url = require('url');
 
 http.createServer((req,res)=>{
-	res.writeHead(200,{'Content-Type':'application/json'});
+	res.writeHead(200,{'Content-Type':'application/json', 'Access-Control-Allow-Origin': '*'});
     res.write(JSON.stringify(data)); // Json to String Convert
     res.end();
     
