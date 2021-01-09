@@ -144,7 +144,7 @@ fetch('https://covid.ourworldindata.org/data/owid-covid-data.json').then(respons
 });
 */
 
-fetch('http://covid-data.cloudno.de/').then(response => response.json()).then(data => {
+fetch('https://covid-data.cloudno.de/').then(response => response.json()).then(data => {
 	//const db = {...data};
 	document.querySelector('#loading').remove();
 	/*
