@@ -140,8 +140,8 @@ fetch('https://covid.ourworldindata.org/data/owid-covid-data.json').then(respons
 	});
 	Object.freeze(table);
 
-	updateConfig();
 	renderTable();
+	updateConfig();
 });
 
 function renderTable() {
@@ -152,43 +152,34 @@ function renderTable() {
 			return {
 				headers: tableConfig,
 				countries: table,
+				total_cases: true,
+				new_cases: true,
+				total_cases_per_million: true,
+				total_deaths: true,
+				new_deaths: true,
+				total_deaths_per_million: true,
+				total_tests: true,
+				new_tests: false,
+				positive_rate: true,
+				total_tests_per_thousand: true,
+				total_vaccinations: true,
+				new_vaccinations: false,
+				total_vaccinations_per_hundred: true,
+				median_age: false,
+				life_expectancy: false,
+				aged_65_older: true,
+				hospital_beds_per_thousand: false,
+				human_development_index: false,
+				population: false,
+				population_density: false,
+				diabetes_prevalence: false,
+				handwashing_facilities: false,
+				gdp_per_capita: false
 			}
 		},
 	});
 }
 
-
-config = new Vue({
-	el: '#config',
-	vuetify: new Vuetify(),
-	data() {
-		return {
-			total_cases: true,
-			new_cases: true,
-			total_cases_per_million: true,
-			total_deaths: true,
-			new_deaths: true,
-			total_deaths_per_million: true,
-			total_tests: true,
-			new_tests: false,
-			positive_rate: true,
-			total_tests_per_thousand: true,
-			total_vaccinations: true,
-			new_vaccinations: false,
-			total_vaccinations_per_hundred: true,
-			median_age: false,
-			life_expectancy: false,
-			aged_65_older: true,
-			hospital_beds_per_thousand: false,
-			human_development_index: false,
-			population: false,
-			population_density: false,
-			diabetes_prevalence: false,
-			handwashing_facilities: false,
-			gdp_per_capita: false
-		}
-	},
-});
 
 function updateConfig() {
 	tableConfig = [{
@@ -197,140 +188,140 @@ function updateConfig() {
 		sortable: false,
 		value: 'location',
 	}];
-	if (config.total_cases) {
+	if (app.total_cases) {
 		tableConfig.push({
 			text: 'Total cases',
 			value: 'total_cases',
 			align: 'start'
 		});
 	}
-	if (config.new_cases) {
+	if (app.new_cases) {
 		tableConfig.push({
 			text: 'New cases',
 			value: 'new_cases'
 		});
 	}
-	if (config.total_cases_per_million) {
+	if (app.total_cases_per_million) {
 		tableConfig.push({
 			text: 'Total cases per 1M',
 			value: 'total_cases_per_million'
 		});
 	}
-	if (config.total_deaths) {
+	if (app.total_deaths) {
 		tableConfig.push({
 			text: 'Total deaths',
 			value: 'total_deaths'
 		});
 	}
-	if (config.new_deaths) {
+	if (app.new_deaths) {
 		tableConfig.push({
 			text: 'New deaths',
 			value: 'new_deaths'
 		});
 	}
-	if (config.total_deaths_per_million) {
+	if (app.total_deaths_per_million) {
 		tableConfig.push({
 			text: 'Total deaths per 1M',
 			value: 'total_deaths_per_million'
 		});
 	}
-	if (config.total_tests) {
+	if (app.total_tests) {
 		tableConfig.push({
 			text: 'Total tests',
 			value: 'total_tests'
 		});
 	}
-	if (config.new_tests) {
+	if (app.new_tests) {
 		tableConfig.push({
 			text: 'New tests',
 			value: 'new_tests'
 		});
 	}
-	if (config.positive_rate) {
+	if (app.positive_rate) {
 		tableConfig.push({
 			text: 'Positive rate',
 			value: 'positive_rate'
 		});
 	}
-	if (config.total_tests_per_thousand) {
+	if (app.total_tests_per_thousand) {
 		tableConfig.push({
 			text: 'Total tests per 1k',
 			value: 'total_tests_per_thousand'
 		});
 	}
-	if (config.total_vaccinations) {
+	if (app.total_vaccinations) {
 		tableConfig.push({
 			text: 'Total vaccinations',
 			value: 'total_vaccinations'
 		});
 	}
-	if (config.new_vaccinations) {
+	if (app.new_vaccinations) {
 		tableConfig.push({
 			text: 'New vaccinations',
 			value: 'new_vaccinations'
 		});
 	}
-	if (config.total_vaccinations_per_hundred) {
+	if (app.total_vaccinations_per_hundred) {
 		tableConfig.push({
 			text: 'Vaccination per 100',
 			value: 'total_vaccinations_per_hundred'
 		});
 	}
-	if (config.median_age) {
+	if (app.median_age) {
 		tableConfig.push({
 			text: 'Median age',
 			value: 'median_age'
 		});
 	}
-	if (config.life_expectancy) {
+	if (app.life_expectancy) {
 		tableConfig.push({
 			text: 'Life expectancy',
 			value: 'life_expectancy'
 		});
 	}
-	if (config.aged_65_older) {
+	if (app.aged_65_older) {
 		tableConfig.push({
 			text: 'Aged 65+',
 			value: 'aged_65_older'
 		});
 	}
-	if (config.hospital_beds_per_thousand) {
+	if (app.hospital_beds_per_thousand) {
 		tableConfig.push({
 			text: 'Hospital beds per 1k',
 			value: 'hospital_beds_per_thousand'
 		});
 	}
-	if (config.human_development_index) {
+	if (app.human_development_index) {
 		tableConfig.push({
 			text: 'HDI',
 			value: 'human_development_index'
 		});
 	}
-	if (config.population) {
+	if (app.population) {
 		tableConfig.push({
 			text: 'Population',
 			value: 'population'
 		});
 	}
-	if (config.population_density) {
+	if (app.population_density) {
 		tableConfig.push({
 			text: 'Population density',
 			value: 'population_density'
 		});
 	}
-	if (config.diabetes_prevalence) {
+	if (app.diabetes_prevalence) {
 		tableConfig.push({
 			text: 'Diabetes prevalence',
 			value: 'diabetes_prevalence'
 		});
 	}
-	if (config.handwashing_facilities) {
+	if (app.handwashing_facilities) {
 		tableConfig.push({
 			text: 'Handwashing facilities',
 			value: 'handwashing_facilities'
 		});
 	}
-	if (config.gdp_per_capita) {
+	if (app.gdp_per_capita) {
 		tableConfig.push({
 			text: 'GDP per capita',
 			value: 'gdp_per_capita'
