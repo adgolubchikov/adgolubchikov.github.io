@@ -122,12 +122,10 @@ fetch('https://covid.ourworldindata.org/data/owid-covid-data.json').then(respons
 				country[prop] = cases[cases.length - 1][prop];
 			}
 
-			/*
 			const tests = item.data.filter(item => item.total_tests > 1);
 			for (let prop in tests[tests.length-1]) {
 				if ((prop.indexOf('tests') >= 0) || (prop.indexOf('rate') >= 0)) country[prop] = tests[tests.length-1][prop];
 			}
-			*/
 
 			const vaccinations = item.data.filter(item => item.total_vaccinations > 1);
 			for (let prop in vaccinations[vaccinations.length - 1]) {
