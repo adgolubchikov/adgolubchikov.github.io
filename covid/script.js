@@ -101,6 +101,7 @@ let tableConfig = [{
 
 //.map(item => '<v-checkbox v-model="'+item.value+'" :label="\`'+item.text+'\`"></v-checkbox>').join("\r\n")
 
+/*
 fetch('https://covid.ourworldindata.org/data/owid-covid-data.json').then(response => response.json()).then(data => {
 	//const db = {...data};
 	document.querySelector('#loading').remove();
@@ -134,6 +135,28 @@ fetch('https://covid.ourworldindata.org/data/owid-covid-data.json').then(respons
 
 			return country;
 		}),
+		writable: false
+	});
+	Object.freeze(table);
+
+	renderTable();
+	updateConfig();
+});
+*/
+
+fetch('http://covid-data.cloudno.de/').then(response => response.json()).then(data => {
+	//const db = {...data};
+	document.querySelector('#loading').remove();
+	/*
+	Object.defineProperty(window, 'db', {
+		value: Object.values(data),
+		writable: false
+	});
+	Object.freeze(db);
+	* */
+
+	Object.defineProperty(window, 'table', {
+		value: [...data],
 		writable: false
 	});
 	Object.freeze(table);
