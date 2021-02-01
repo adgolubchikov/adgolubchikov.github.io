@@ -1,6 +1,6 @@
 'use strict';
 
-const BASE_URL = 'https://map-test.cloudno.de/';
+const BASE_URL = 'https://map-test.cloudno.de';
 
 let data = [];
 
