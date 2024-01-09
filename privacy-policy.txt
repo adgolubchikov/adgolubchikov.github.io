@@ -1,1 +1,0 @@
-My apps does not have access to internet technically, does not collect and does not use any data. All my apps are just standalone applications, isolated from network. Feel free to use, no guarantees, "as is". 
